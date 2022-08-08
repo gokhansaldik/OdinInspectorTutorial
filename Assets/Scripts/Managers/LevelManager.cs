@@ -4,6 +4,7 @@ using Data.ValueObject;
 using Data.UnityObject;
 using System.Collections.Generic;
 using System;
+using Enum;
 
 namespace Managers
 {
@@ -13,33 +14,54 @@ namespace Managers
 
         #region Public Variables
 
-        [Header("Data")] public List<HomeValues> Data;
+        [Header("Data")] public int Data;
+        [Header("Data")] public List<Buildings> BuildData;
 
         #endregion
 
         #region Serialized Variables
-
-        [SerializeField] private GameObject levelHolder;
-
-
         #endregion
 
         #region Private Variables
-        private int _data;
         #endregion
 
         #endregion
 
         private void Awake()
         {
-            _data = 1;
-            Data = GetBuild();
-            Debug.Log(Data[0].HomeLocation.x);
-            Instantiate (Data[0].HomeBuildGmeObject, Data[0].HomeLocation,Quaternion.identity);
+            Data = GetLevelData();
+            BuildData = GetBuildData(Data);
+            LevelInit();
         }
 
-        private List<HomeValues> GetBuild() =>
-            Resources.Load<CD_Home>($"Data/Home{_data}").HomeSetting;
+        private int GetLevelData() {
 
+            return Resources.Load<CD_Level>("Data/Level").Levels.Count; 
+        }
+
+        private List<Buildings> GetBuildData(int data)
+        {
+
+            return Resources.Load<CD_Home>("Data/Home"+data).BuildingsSettings;
+        }
+
+
+        public void LevelInit()
+        {
+
+            for (int i = 0; i < BuildData.Count; i++)
+            {
+                var HouseSettings = BuildData[i].HouseSettings;
+                for (int j = 0; j < HouseSettings.Count; j++)
+                {
+                    var position = new Vector3(BuildData[i].HomeLocation.position.x + HouseSettings[j].Offset.x,
+                        BuildData[i].HomeLocation.position.y,
+                        BuildData[i].HomeLocation.position.z + HouseSettings[j].Offset.y);
+
+                    Instantiate(HouseSettings[j].HomeBuildGmeObject, position, Quaternion.identity);
+                }
+            }
+
+        }
     }
 }

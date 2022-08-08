@@ -20,7 +20,7 @@ namespace Data.UnityObject
         public string Description;
 
 
-        public List<HomeValues> HomeSetting = new List<HomeValues>();
+        public List<Buildings> BuildingsSettings = new List<Buildings>();
 
     }
 }
