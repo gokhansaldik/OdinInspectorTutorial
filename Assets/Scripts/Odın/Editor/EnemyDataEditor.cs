@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using Sirenix.OdinInspector.Editor;
 using Sirenix.Utilities.Editor;
 using UnityEditor;
+using Data.UnityObject;
 
 public class EnemyDataEditor : OdinMenuEditorWindow
 {
@@ -28,7 +29,7 @@ public class EnemyDataEditor : OdinMenuEditorWindow
         var tree = new OdinMenuTree();
         createNewEnemyData = new CreateNewEnemyData();
         tree.Add("Create New",createNewEnemyData);
-        tree.AddAllAssetsAtPath("EnemyData", "Assets/Scripts",typeof(EnemyData));
+        tree.AddAllAssetsAtPath("EnemyData", "Assets/Resources/Data",typeof(EnemyData));
         
         return tree;
     }
@@ -67,7 +68,7 @@ public class EnemyDataEditor : OdinMenuEditorWindow
         [Button("Add New Enemy CD")]
         private void CreateNewData()
         {
-            AssetDatabase.CreateAsset(enemyData,"Assets/Scripts/"+enemyData.enemyName + ".asset");
+            AssetDatabase.CreateAsset(enemyData,"Assets/Resources/Data/"+enemyData.enemyName + ".asset");
             AssetDatabase.SaveAssets();
 
             enemyData = ScriptableObject.CreateInstance<EnemyData>();
