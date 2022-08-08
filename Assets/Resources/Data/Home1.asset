@@ -14,34 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BuildName: Home1
   Description: 
+  Platform: {fileID: 0}
   BuildingsSettings:
-  - HomeLocation: {fileID: 0}
-    HouseSettings:
+  - HouseSettings:
     - HomeBuildGmeObject: {fileID: 1185575685447016, guid: bbc376fca6f8d6a42923e6dd790c3421, type: 3}
       SellPiece: 20
-      Offset: {x: 100, y: 0}
-  - HomeLocation: {fileID: 0}
-    HouseSettings:
+      Offset: {x: 0, y: 0}
+  - HouseSettings:
     - HomeBuildGmeObject: {fileID: 1232602454522168, guid: 3d5e963761f48204a883fa94beee6d1c, type: 3}
       SellPiece: 20
       Offset: {x: 0, y: 5}
-  - HomeLocation: {fileID: 0}
-    HouseSettings:
+  - HouseSettings:
     - HomeBuildGmeObject: {fileID: 1239824965422734, guid: 0fac5e02b8186934fb05646e055b4870, type: 3}
       SellPiece: 20
       Offset: {x: 0, y: 0}
-  - HomeLocation: {fileID: 0}
-    HouseSettings:
+  - HouseSettings:
     - HomeBuildGmeObject: {fileID: 1585394738632644, guid: ff0624b93ac785b40817c26d0cd6b396, type: 3}
       SellPiece: 20
-      Offset: {x: 10, y: 0}
-  - HomeLocation: {fileID: 0}
-    HouseSettings:
+      Offset: {x: 0, y: 0}
+  - HouseSettings:
     - HomeBuildGmeObject: {fileID: 1048238969174676, guid: da2fd2ab3c96aeb4cac718a10c3b0dfb, type: 3}
       SellPiece: 20
       Offset: {x: 0, y: 0}
-  - HomeLocation: {fileID: 0}
-    HouseSettings:
+  - HouseSettings:
     - HomeBuildGmeObject: {fileID: 1453203562746868, guid: 29b05067f4659ec43836328926daab5c, type: 3}
+      SellPiece: 20
+      Offset: {x: 0, y: 0}
+    - HomeBuildGmeObject: {fileID: 0}
       SellPiece: 20
       Offset: {x: 0, y: 0}

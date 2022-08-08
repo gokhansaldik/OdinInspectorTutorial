@@ -10,7 +10,7 @@ namespace Data.ValueObject
     [Serializable]
     public class Buildings
     {
-        public Transform HomeLocation;
+        //public GameObject HomeLocation;
 
         public List<HomeValues> HouseSettings = new List<HomeValues>();
     }

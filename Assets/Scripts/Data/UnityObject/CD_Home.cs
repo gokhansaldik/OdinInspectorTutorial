@@ -20,7 +20,12 @@ namespace Data.UnityObject
         public string Description;
 
 
+
+        public GameObject Platform;
+
         public List<Buildings> BuildingsSettings = new List<Buildings>();
+
+        
 
     }
 }

@@ -20,6 +20,8 @@ namespace Managers
         #endregion
 
         #region Serialized Variables
+        [SerializeField] private int level=1; 
+        [SerializeField] private GameObject idleArea;
         #endregion
 
         #region Private Variables
@@ -29,15 +31,16 @@ namespace Managers
 
         private void Awake()
         {
-            Data = GetLevelData();
-            BuildData = GetBuildData(Data);
+            idleArea = GameObject.Find("IDLE_Floor");
+            //Data = GetLevelData();
+            BuildData = GetBuildData(level);
             LevelInit();
         }
 
-        private int GetLevelData() {
+        //private int GetLevelData() {
 
-            return Resources.Load<CD_Level>("Data/Level").Levels.Count; 
-        }
+        //    return Resources.Load<CD_Level>("Data/Level").Levels.Count; 
+        //}
 
         private List<Buildings> GetBuildData(int data)
         {
@@ -54,9 +57,10 @@ namespace Managers
                 var HouseSettings = BuildData[i].HouseSettings;
                 for (int j = 0; j < HouseSettings.Count; j++)
                 {
-                    var position = new Vector3(BuildData[i].HomeLocation.position.x + HouseSettings[j].Offset.x,
-                        BuildData[i].HomeLocation.position.y,
-                        BuildData[i].HomeLocation.position.z + HouseSettings[j].Offset.y);
+                    var gameObjectChild = idleArea.transform.GetChild(i);
+                    var position = new Vector3(gameObjectChild.transform.position.x + HouseSettings[j].Offset.x,
+                        gameObjectChild.position.y,
+                        gameObjectChild.position.z + HouseSettings[j].Offset.y);
 
                     Instantiate(HouseSettings[j].HomeBuildGmeObject, position, Quaternion.identity);
                 }
